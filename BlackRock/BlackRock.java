@@ -67,11 +67,48 @@ public class BlackRock {
         }
     }
 
+    public static String buyAndSellStocks(String input) {
+        TreeMap<String, Integer> list = new TreeMap<>();
+
+        String[] portfolio = input.split(";")[0].split("\\|");
+        String[] benchmark = input.split(";")[1].split("\\|");
+
+        for (int i = 0; i < portfolio.length; i++) {
+            String p_name = portfolio[i].split(",")[0] + "," + portfolio[i].split(",")[1];
+            int p_num = -Integer.parseInt(portfolio[i].split(",")[2]);
+
+            if (list.containsKey(p_name)) {
+                p_num = list.get(p_name) - p_num;
+            }
+            list.put(p_name, p_num);
+        }
+
+        for (int j = 0; j < benchmark.length; j++) {
+            String b_name = benchmark[j].split(",")[0] + "," + benchmark[j].split(",")[1];
+            int b_num = Integer.parseInt(benchmark[j].split(",")[2]);
+
+            if (list.containsKey(b_name)) {
+                b_num = list.get(b_name) + b_num;
+            }
+            list.put(b_name, b_num);
+        }
+
+        String answer = "";
+        for (String key: list.keySet()) {
+            int diff = list.get(key);
+            String info = key + "," + Math.abs(diff) + "\n";
+            if (diff > 0) {      answer += "BUY," + info;}
+            else if (diff < 0) { answer += "SELL," + info;}
+        }
+
+        return answer.substring(0,answer.length()-1);
+    }
+
     public static void main(String args[]) {
         /* FOR REVERSE AND SUM */
-        System.out.print("please insert string for test: ");
-        String str = new Scanner(System.in).nextLine();
-        System.out.println(reverse(str));
+        // System.out.print("please insert string for test: ");
+        // String str = new Scanner(System.in).nextLine();
+        // System.out.println(reverse(str));
 
         /* FOR RETURN CHANGE */
         // System.out.print("please insert value of item and cash given (separated by ';'): ");
@@ -80,5 +117,8 @@ public class BlackRock {
         // double arg1 = Double.parseDouble(arg[0]);
         // double arg2 = Double.parseDouble(arg[1]);
         // System.out.println(returnChange(arg1, arg2));
+
+        /* FOR BUY AND SELL STOCKS */
+        System.out.println(buyAndSellStocks("VODAFONE,STOCK,5|GOOGLE,STOCK,5;VODAFONE,STOCK,3|APPLE,BOND,10"));
     }
 }
