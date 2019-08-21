@@ -168,6 +168,63 @@ public class Test {
         return count;
     }
 
+    /*
+        Given a 7 digit telephone number, print out all the possible sequences of letters that can represent the given
+        telephone number. Note that in a standard phone keypad 0 and 1 do not have any letters associated with them.
+        All 0's and 1's in the telephone number should be retained in the sequence of letters. You may use the
+        following mapping between numbers and characters 0=>0, 1=>1, 2=>abc, 3=>def, 4=>ghi, 5=>jkl, 6=>mno, 7=>pqrs,
+        8=>tuv, 9=>wxyz
+        Input:
+        Your program should read lines from standard input. Each line contains a 7 digit telephone number.
+        Output:
+        Print to standard output the words that can produce the telephone number, alphabetically sorted and comma
+        delimited.
+    */
+    public static String phoneNumber(String numbers) {
+        HashMap<Character, ArrayList<Character>> map = new HashMap<>();
+        map.put('0', new ArrayList<Character>(Arrays.asList('0', '0', '0', '0')));
+        map.put('1', new ArrayList<Character>(Arrays.asList('1', '1', '1', '1')));
+        map.put('2', new ArrayList<Character>(Arrays.asList('a', 'b', 'c', 'c')));
+        map.put('3', new ArrayList<Character>(Arrays.asList('d', 'e', 'f', 'f')));
+        map.put('4', new ArrayList<Character>(Arrays.asList('g', 'h', 'i', 'i')));
+        map.put('5', new ArrayList<Character>(Arrays.asList('j', 'k', 'l', 'l')));
+        map.put('6', new ArrayList<Character>(Arrays.asList('m', 'n', 'o', 'o')));
+        map.put('7', new ArrayList<Character>(Arrays.asList('p', 'q', 'r', 's')));
+        map.put('8', new ArrayList<Character>(Arrays.asList('t', 'u', 'v', 'v')));
+        map.put('9', new ArrayList<Character>(Arrays.asList('w', 'x', 'y', 'z')));
+
+        TreeSet<String> results = new TreeSet<>();
+        for (int i = 0; i < numbers.length(); i++) {
+            char digit = numbers.charAt(i);
+            System.out.println(map.get(digit));
+        }
+
+        System.out.println(map);
+        return "number";
+    }
+
+        
+    /*
+        Your friend John uses a lot of emoticons when you talk to him on Messenger. In addition to being a person who
+        likes to express himself through emoticons, he hates unbalanced parenthesis so much that it makes him go :(. 
+        Sometimes he puts emoticons within parentheses, and you find it hard to tell if a parenthesis really is a
+        parenthesis or part of an emoticon. A message has balanced parentheses if it consists of one of the following:
+        - An empty string "" 
+        - One or more of the following characters: 'a' to 'z', ' ' (a space) or ':' (a colon) 
+        - An open parenthesis '(', followed by a message with balanced parentheses, followed by a close parenthesis ')'. 
+        - A message with balanced parentheses followed by another message with balanced parentheses. 
+        - A smiley face ":)" or a frowny face ":(" 
+        Write a program that determines if there is a way to interpret his message while leaving the parentheses balanced.
+        Input:
+        Your program should read lines from standard input. Each line contains a message that you got from John.
+        Output:
+        Print out the string "YES"/"NO" (all quotes for clarity only) stating whether or not it is possible that the
+        message had balanced parentheses.
+    */
+    public static String parenthesis(int num) {
+        return "YES";
+    }
+
     public static void main(String args[]) {
         /* FOR REVERSE AND SUM */
         // String str = new Scanner(System.in).nextLine();
@@ -210,5 +267,11 @@ public class Test {
 
         /* FOR WINNING HANDS */
         // System.out.println(winningHands(3, 2, new int[]{2,2,2}));
+
+        /* FOR PHONE NUMBER */
+        System.out.println(phoneNumber("2243322"));
+
+        /* FOR PARENTHESIS */
+        // System.out.println(parenthesis(3));
     }
 }
