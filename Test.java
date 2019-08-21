@@ -194,13 +194,16 @@ public class Test {
         map.put('9', new ArrayList<Character>(Arrays.asList('w', 'x', 'y', 'z')));
 
         TreeSet<String> results = new TreeSet<>();
-        for (int i = 0; i < numbers.length(); i++) {
-            char digit = numbers.charAt(i);
-            System.out.println(map.get(digit));
+        for (int set = 0; set < 4; set++) {
+            String letters = "";
+            for (int i = 0; i < numbers.length(); i++) {
+                char digit = numbers.charAt(i);
+                letters += map.get(digit).get(set);
+            }
+            results.add(letters);
         }
-
-        System.out.println(map);
-        return "number";
+        System.out.println(results);
+        return "num";
     }
 
         
@@ -269,7 +272,7 @@ public class Test {
         // System.out.println(winningHands(3, 2, new int[]{2,2,2}));
 
         /* FOR PHONE NUMBER */
-        System.out.println(phoneNumber("2243322"));
+        System.out.println(phoneNumber("2243372"));
 
         /* FOR PARENTHESIS */
         // System.out.println(parenthesis(3));
