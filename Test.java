@@ -15,39 +15,6 @@ public class Test {
         else return "=";
     }
 
-    // round to 2 decimal places
-    public static Double round(double val) {
-        val = val*100;
-        val = Math.round(val);
-        return val/100;
-    }
-    public static String returnChange(double a, double b) {
-        if (b < a) return "ERROR";
-        else if (b == a) return "ZERO";
-        else {
-            ArrayList<String> values = new ArrayList<String>();
-            double change = b-a;
-            while (change > 0) {
-                if (change >= 100) {values.add("ONE HUNDRED");change=round(change-100);}
-                else if (change >= 50) {values.add("FIFTY");change=round(change-50);}
-                else if (change >= 20) {values.add("TWENTY");change=round(change-20);}
-                else if (change >= 10) {values.add("TEN");change=round(change-10);}
-                else if (change >= 5) {values.add("FIVE");change=round(change-5);}
-                else if (change >= 2) {values.add("TWO");change=round(change-2);}
-                else if (change >= 1) {values.add("ONE");change=round(change-1);}
-                else if (change >= 0.5) {values.add("HALF DOLLAR");change=round(change-0.50);}
-                else if (change >= 0.25) {values.add("QUARTER");change=round(change-0.25);}
-                else if (change >= 0.1) {values.add("DIME");change=round(change-0.10);}
-                else if (change >= 0.05) {values.add("NICKEL");change=round(change-0.05);}
-                else {values.add("PENNY");change=round(change-0.01);}
-            }
-            // remove square brackets at the front and end
-            String answer = values.toString().substring(1,values.toString().length()-1);
-            // return values that are separated by semi-colon
-            return answer.replace(", ", ";");
-        }
-    }
-
     public static int findingWorstStock(double[][] stocks) {
         if (stocks.length == 0) return 0;
         double min_rate = 100;
@@ -194,16 +161,28 @@ public class Test {
         map.put('9', new ArrayList<Character>(Arrays.asList('w', 'x', 'y', 'z')));
 
         TreeSet<String> results = new TreeSet<>();
-        for (int set = 0; set < 4; set++) {
-            String letters = "";
-            for (int i = 0; i < numbers.length(); i++) {
-                char digit = numbers.charAt(i);
-                letters += map.get(digit).get(set);
+        String letters = "";
+        // loop through constants
+        for (int constant = 0; constant < 4; constant++) {
+            for (int index = 0; index < numbers.length(); index++) {
+                for (int vary = 0; vary < 4; vary++) {
+                    // for a particular digit, permute over all 4 possibilities
+                    // keep other digits constant
+                    // do this for all digits
+                    for (int front_const = 0; front_const < index; front_const++) {
+                        letters += map.get(numbers.charAt(front_const)).get(constant);
+                    }
+                    letters += map.get(numbers.charAt(index)).get(vary);
+                    for (int end_const = index+1; end_const < numbers.length(); end_const++) {
+                        letters += map.get(numbers.charAt(end_const)).get(constant);
+                    }
+                    results.add(letters);
+                    letters = "";
+                }
             }
-            results.add(letters);
         }
-        System.out.println(results);
-        return "num";
+        String answer = results.toString().substring(1,results.toString().length()-1);
+        return answer.substring(1,answer.length()-1);
     }
 
         
@@ -224,8 +203,44 @@ public class Test {
         Print out the string "YES"/"NO" (all quotes for clarity only) stating whether or not it is possible that the
         message had balanced parentheses.
     */
-    public static String parenthesis(int num) {
-        return "YES";
+    public static String replaceSmileys(String line) {
+        line = line.replaceAll("}", "");
+        line = line.replaceAll(":\\)", "}");
+        line = line.replaceAll(":\\(", "");
+        return line;
+    }
+    public static String parenthesis(String message) {
+        message = replaceSmileys(message);
+
+        Stack<Character> parens = new Stack<>();
+        Stack<Character> smileys = new Stack<>();
+
+        char[] charArr = message.toCharArray();
+        for (char c: charArr) {
+            if (c == '(') {
+                parens.push(c);
+            } else if (c == '}') {
+                smileys.push(c);
+            } else if (c == ')') {
+                if (parens.isEmpty()) {
+                    // end parenthesis is found without start parenthesis
+                    return "NO";
+                } else {
+                    // found a pair of parenthesis, remove the set from stack
+                    parens.pop();
+                }
+            }
+        }
+        if (parens.size() == smileys.size()) {
+            // COLON ":" CAN ACT AS PART OF MESSAGE OR PART OF SMILEY
+            return "YES";
+        } else if (parens.size() == 0) {
+            // smiley/frown faces occur outside parenthesis
+            return "YES";
+        } else {
+            // not balanced
+            return "NO";
+        }
     }
 
     public static void main(String args[]) {
@@ -239,13 +254,6 @@ public class Test {
         // int arg1 = Integer.parseInt(arg[0]);
         // int arg2 = Integer.parseInt(arg[1]);
         // System.out.println(setInequality(arg1, arg2));
-
-        /* FOR RETURN CHANGE */
-        // String str = new Scanner(System.in).nextLine();
-        // String[] arg = str.split(";");
-        // double arg1 = Double.parseDouble(arg[0]);
-        // double arg2 = Double.parseDouble(arg[1]);
-        // System.out.println(returnChange(arg1, arg2));
 
         /* FOR FINDING WORST STOCK */
         // double[][] values = new double[][]{{1200,100,105},{1400,50,55}};
@@ -272,9 +280,9 @@ public class Test {
         // System.out.println(winningHands(3, 2, new int[]{2,2,2}));
 
         /* FOR PHONE NUMBER */
-        System.out.println(phoneNumber("2243372"));
+        // System.out.println(phoneNumber("2243372"));
 
         /* FOR PARENTHESIS */
-        // System.out.println(parenthesis(3));
+        System.out.println(parenthesis(":()"));
     }
 }
