@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MinimumCoints {
+public class MinimumCoins {
     public static int count(int num) {
         int[] list = new int[]{4,2,1};
         int count = 0;
