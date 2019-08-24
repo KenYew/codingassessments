@@ -34,7 +34,7 @@ def sum_pair(arr, target):
 			return True
 		elif arr[i] + arr[j] < target:
 			i += 1
-		else: # arr[i] + arr[j] < target
+		else: # arr[i] + arr[j] > target
 			j -= 1
 	return False
 
