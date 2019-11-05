@@ -7,7 +7,7 @@
 def amounts_to_return_users(transaction_activities):
     # sort the transactions based on timestamp
     sorted_t = sorted([t.split(",")[0]+","+t.split(",")[-1]+","+",".join(t.split(",")[1:3]) for t in transaction_activities])
-    
+
     cards = {}
     for transaction in sorted_t:
         card,timestamp,command,value = transaction.split(",")
