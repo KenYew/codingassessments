@@ -1,11 +1,11 @@
 # spot fraud credit card authorisations
 
-# transaction type: 'card','rule','auth'
+# transaction types: 'card','rule','auth'
 
 # LOGIC -> authorisation is accepted if:
 # - 1) card is found within database
 # - 2) auth amount is not larger than amount in card
-# - 3) country is "USA", industry is not "bitcoin" or "precious metals" 
+# - 3) it follows the dynamic rules that are listed along the way
 
 # INPUT -> list of json strings
 # OUTPUT -> only auth transactions, showing whether they are approved

@@ -1,6 +1,6 @@
 # spot fraud credit card authorisations
 
-# transaction type: 'card','auth'
+# transaction types: 'card','auth'
 
 # LOGIC -> authorisation is accepted if:
 # - 1) card is found within database
