@@ -99,7 +99,7 @@ public class Amazon {
     //   numOfConnections: an integer representing the number of connections between the servers
     //   connections: a list of pairs of integers representing the connections between 2 servers
     // output:
-    //   Return a list of integer pairs representing the critical connections. Output an empty list
+    //   Return a list of integer pairs representing the critical connections. Output an empty list if there are no critical connections
 
     // Constraints:
     //   0 <= numOfServers <= 100,000
@@ -112,35 +112,33 @@ public class Amazon {
     // input: 5, 5, [[1,2],[1,3],[3,4],[1,4],[4,5]]
     // output: [[1,2],[4,5]]
 
-    public static void visualise(List<Integer>[] graph) {
-        // for visualising only
-        for (int i = 0; i < graph.length; i++) {
-            System.out.print("From " + Integer.toString(i) + " : To ");
-            for (int j = 0; j < graph[i].size(); j++) {
-                System.out.print(graph[i].get(j));
-                System.out.print(" ");
-            }
-            System.out.println("");
-        }
-    }
+    // https://www.geeksforgeeks.org/bridge-in-a-graph/
 
     static int time = 0;
-    public static void dfs(int u, int[] low, int[] disc, List<Integer>[] graph, List<List<Integer>> res, int pre) {
+    public static void traverse(int u, int[] low, int[] disc, List<List<Integer>> graph, List<PairInt> result, int pre) {
         disc[u] = low[u] = ++time;
         
-        for (int i = 0; i < graph[u].size(); i++) {
-            int v = graph[u].get(i);
+        for (int i = 0; i < graph.get(u).size(); i++) {
+            int v = graph.get(u).get(i);
 
             if (v == pre) { continue; }
-            if (disc[v] == -1) {
-                dfs(v, low, disc, graph, res, u);
 
+            // if node has not been visited
+            if (disc[v] == -1) {
+                traverse(v, low, disc, graph, result, u);
+
+                // check whether low value needs to be updated
                 low[u] = Math.min(low[u], low[v]);
                 
+                // If the lowest vertex reachable from subtree under v is below u in DFS tree,
+                // then u-v is a bridge
                 if (low[v] > disc[u]) {
-                    res.add(Arrays.asList(u,v));
+                    result.add(new PairInt(u+1,v+1));
                 }
-            } else {
+            }
+
+            // if node has been visited, check whether we need to update the low value
+            else {
                 low[u] = Math.min(low[u], disc[v]);
             }
 
@@ -148,39 +146,33 @@ public class Amazon {
     }
 
     public static List<PairInt> criticalConnections(int numOfServers, int numOfConnections, List<PairInt> connections) {
+        // discovery time: time when node is visited
         int[] disc = new int[numOfServers];
+        // low value: indicates whether there's some other early node (based on disc) by the subtree rooted with that node
+        // (whether it forms a cyclic basically)
         int[] low = new int[numOfServers];
-
-        List<Integer>[] graph = new ArrayList[numOfServers];
-        List<List<Integer>> res = new ArrayList<>();
 
         Arrays.fill(disc, -1);
 
+        List<List<Integer>> graph = new ArrayList<>();
+        List<PairInt> result = new ArrayList<>();
+
         for (int i = 0; i < numOfServers; i++) {
-            graph[i] = new ArrayList<Integer>();
+            graph.add(new ArrayList<Integer>());
         }
 
         for (int i = 0; i < connections.size(); i++) {
             int from = connections.get(i).first;
             int to = connections.get(i).second;
-
-            graph[from - 1].add(to - 1);
-            graph[to - 1].add(from - 1);
+            graph.get(from-1).add(to-1);
+            graph.get(to-1).add(from-1);
         }
 
         for (int i = 0; i < numOfServers; i++) {
             if (disc[i] == -1) {
-                dfs(i, low, disc, graph, res, i);
+                traverse(i, low, disc, graph, result, i);
             }
         }
-
-        List<PairInt> result = new ArrayList<>();
-
-        for (List<Integer> li : res) {
-            result.add(new PairInt(li.get(0)+1, li.get(1)+1));
-        }
-
-        // visualise(graph);
 
         return result;
     }
