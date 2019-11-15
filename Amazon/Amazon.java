@@ -22,6 +22,7 @@ public class Amazon {
         int[] answer = cells;
 
         for (int day = 0; day < days; day++) {
+            System.out.print("day: ");
             System.out.println(day);
             for (int i = 0; i < cells.length; i++) {
                 System.out.print(answer[i]);
@@ -58,22 +59,20 @@ public class Amazon {
     // output:
     // - Return an integer representing the number of distinct pairs of ratings from a list of fraud ratings for the request that sum to a target value
 
-    // example:
-    // input: 10, [10,3,5,7,2,8,9,6,1,4], 7
-    // output: 3
-
     public static int countPairs(int numCount, List<Integer> ratingValues, int target) {
         int count = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < numCount; i++) {
             int value = ratingValues.get(i);
-            map.put(value, target-value);
+            if (map.get(target-value) != null) {
+                count++;
+            } else {
+                map.put(value, target-value);
+            }
         }
 
-        System.out.println(map);
-
-        return 0;
+        return count;
     }
 
     // Q2:
@@ -103,7 +102,10 @@ public class Amazon {
     // output: [[1,2],[4,5]]
 
     public static void main(String[] args) {
-        // cellComplete(new int[]{0,2,5,1}, 5);
-        countPairs(10, new ArrayList<Integer>(Arrays.asList(10,3,5,7,2,8,9,6,1,4)), 7);
+        int[] q1_practice = cellComplete(new int[]{0,0,0,0,0,1,1,0,0,1,0,1}, 5);
+        for (int i = 0; i < q1_practice.length; i++) {
+            System.out.println(q1_practice[i]);
+        }
+        // System.out.println(countPairs(10, new ArrayList<Integer>(Arrays.asList(10,3,5,7,2,8,9,6,1,4)), 7));
     }
 }
