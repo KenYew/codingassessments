@@ -20,21 +20,29 @@ public class Amazon {
     // - array: state of 8 cells after given days
 
     public static int[] cellComplete(int[] cells, int days) {
-        int[] answer = cells;
+        int[] answer = new int[8];
+        int[] temp = cells;
 
         for (int day = 0; day < days; day++) {
-            int[] temp = answer;
-            System.out.print("day: ");
-            System.out.println(day);
             for (int i = 0; i < cells.length; i++) {
-                System.out.print(answer[i]);
-                // if ((i == 0) || (i == cells.length-1)) {
-
-                // } else {
-
-                // }
+                // left edge of cell
+                if (i == 0) {
+                    if (temp[1] == 1) { answer[0] = 1;}
+                    else { answer[0] = 0;}
+                }
+                // right edge of cell
+                else if (i == cells.length-1) {
+                    if (temp[i-1] == 1) { answer[i-1] = 1;}
+                    else { answer[i-1] = 0; }
+                }
+                // cells in the middle
+                else {
+                    if (temp[i-1] == temp[i+1]) { answer[i] = 0; }
+                    else { answer[i] = 1; }
+                }
             }
-            System.out.println("");
+            // assign new temp array
+            temp = answer;
         }
         return answer;
     }
@@ -115,7 +123,7 @@ public class Amazon {
     // https://www.geeksforgeeks.org/bridge-in-a-graph/
 
     static int time = 0;
-    public static void traverse(int u, int[] low, int[] disc, List<List<Integer>> graph, List<PairInt> result, int pre) {
+    public static void traverse(int u, int pre, int[] low, int[] disc, List<List<Integer>> graph, List<PairInt> result) {
         disc[u] = low[u] = ++time;
         
         for (int i = 0; i < graph.get(u).size(); i++) {
@@ -126,20 +134,20 @@ public class Amazon {
             // if node has not been visited
             if (disc[v] == -1) {
                 // recursively visit nodes
-                traverse(v, low, disc, graph, result, u);
+                traverse(v, u, low, disc, graph, result);
 
                 // check whether low value needs to be updated
                 low[u] = Math.min(low[u], low[v]);
                 
-                // If the lowest vertex reachable from subtree under v is below u in DFS tree,
-                // then u-v is a bridge
+                // If v cannot be reached by nodes other than u, u-v is a bridge
                 if (low[v] > disc[u]) {
                     result.add(new PairInt(u+1,v+1));
                 }
             }
 
-            // if node has been visited, check whether we need to update the low value
+            // if node has been visited
             else {
+                // check whether low value needs to be updated
                 low[u] = Math.min(low[u], disc[v]);
             }
 
@@ -149,11 +157,10 @@ public class Amazon {
     public static List<PairInt> criticalConnections(int numOfServers, int numOfConnections, List<PairInt> connections) {
         // discovery time: time when node is visited
         int[] disc = new int[numOfServers];
+        Arrays.fill(disc, -1);
         // low value: indicates whether there's some other early node (based on disc) by the subtree rooted with that node
         // (whether it forms a cyclic basically)
         int[] low = new int[numOfServers];
-
-        Arrays.fill(disc, -1);
 
         List<List<Integer>> graph = new ArrayList<>();
         List<PairInt> result = new ArrayList<>();
@@ -171,7 +178,7 @@ public class Amazon {
 
         for (int i = 0; i < numOfServers; i++) {
             if (disc[i] == -1) {
-                traverse(i, low, disc, graph, result, i);
+                traverse(i, i, low, disc, graph, result);
             }
         }
 
@@ -179,25 +186,17 @@ public class Amazon {
     }
 
     public static void main(String[] args) {
-        // int[] q1_practice = cellComplete(new int[]{0,0,0,0,0,1,1,0,0,1,0,1}, 5);
-        // for (int i = 0; i < q1_practice.length; i++) {
-        //     System.out.println(q1_practice[i]);
-        // }
+        // int[] q1_practice = cellComplete(new int[]{0,0,1,0,0,1,1,1}, 5);
 
-        // System.out.println(countPairs(10, new ArrayList<Integer>(Arrays.asList(10,3,5,7,2,8,9,6,1,4)), 7));
+        // int q1 = countPairs(10, new ArrayList<Integer>(Arrays.asList(10,3,5,7,2,8,9,6,1,4)), 7);
 
-        List<PairInt> result = criticalConnections(5, 5, new ArrayList<>(Arrays.asList(
+        List<PairInt> q2 = criticalConnections(5, 5, new ArrayList<>(Arrays.asList(
             new PairInt(1,2),
             new PairInt(1,3),
             new PairInt(3,4),
             new PairInt(1,4),
             new PairInt(4,5)
         )));
-        for (int i = 0; i < result.size(); i++) {
-            System.out.print(result.get(i).first);
-            System.out.print(" ");
-            System.out.println(result.get(i).second);
-        }
     }
 }
 
