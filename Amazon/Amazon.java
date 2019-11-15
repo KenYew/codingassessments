@@ -125,6 +125,7 @@ public class Amazon {
 
             // if node has not been visited
             if (disc[v] == -1) {
+                // recursively visit nodes
                 traverse(v, low, disc, graph, result, u);
 
                 // check whether low value needs to be updated
