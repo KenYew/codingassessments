@@ -5,9 +5,30 @@ public class Amazon {
     // There is a colony of 8 cells arranged in a straight line where each day every cell competes with its adjacent cells (neighbours).
     // Each day, for each cell, if its neighbours are both active or both inactive, the cell becomes inactive the next day;
     // otherwise it becomes active the next day
+    // An integers value of 1 represents an active cell and value of 0 represents an inactive cell
 
-    public static int cellComplete(int[] cells, int days) {
-        return 0;
+    // Assumptions:
+    // - the two cells at the end have single adjacent cell, so the other adjacent cell can be assumed to be always inactive
+    // - even after updating the cell state, consider previous state for updating the state of other cells.
+    // Update the cell information of all cells simulataneously
+
+    // input:
+    // - array: current state of 8 cells
+    // - integer: days to simulate
+    // output:
+    // - array: state of 8 cells after given days
+
+    public static int[] cellComplete(int[] cells, int days) {
+        int[] answer = cells;
+
+        for (int day = 0; day < days; day++) {
+            System.out.println(day);
+            for (int i = 0; i < cells.length; i++) {
+                System.out.print(answer[i]);
+            }
+            System.out.println("");
+        }
+        return answer;
     }
 
     // practice Q2:
@@ -30,6 +51,31 @@ public class Amazon {
     // When two ratings add up to a certain value, it increases the risk that the request may be fraudulent.
     // Write an algorithm to find the number of distinct pair of ratings from an array of all fraud ratings for the request that sum to a target value
 
+    // input:
+    // - numCount: an integer representing the number of rating
+    // - ratingValues: a list of integers representing the value of fraud ratings
+    // - target: an integer representing the target value
+    // output:
+    // - Return an integer representing the number of distinct pairs of ratings from a list of fraud ratings for the request that sum to a target value
+
+    // example:
+    // input: 10, [10,3,5,7,2,8,9,6,1,4], 7
+    // output: 3
+
+    public static int countPairs(int numCount, List<Integer> ratingValues, int target) {
+        int count = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < numCount; i++) {
+            int value = ratingValues.get(i);
+            map.put(value, target-value);
+        }
+
+        System.out.println(map);
+
+        return 0;
+    }
+
     // Q2:
     // Amazon wants to pilet hardware replacements in Data Centre AMZN525, to increase the reliability of their network.
     // AMZN525 has a "connected" network of data servers, i.e. every server can communicate with the rest of the network.
@@ -39,14 +85,25 @@ public class Amazon {
     // Write a method that returns the critical connections in AMZN525
 
     // input:
-    // 1) - numOfServers
-    // 2) - numOfConnections
-    // 3) - connections
-
+    // - numOfServers: an integer representing the number of servers in the data center
+    // - numOfConnections: an integer representing the number of connections between the servers
+    // - connections: a list of pairs of integers representing the connections between 2 servers
     // output:
-    // - Return a list of integer pairs representing the critical connections. Output an empty list 
+    // - Return a list of integer pairs representing the critical connections. Output an empty list
+
+    // Constraints:
+    // - 0 <= numOfServers <= 100,000
+    // - 0 <= numOfConnections <= 100,000
+    // - 1 <= connections[i][j] <= numOfServers
+    // - 0 <= i < numOfConnections
+    // - 0 <= j < 2
+
+    // example:
+    // input: 5, 5, [[1,2],[1,3],[3,4],[1,4],[4,5]]
+    // output: [[1,2],[4,5]]
 
     public static void main(String[] args) {
-        System.out.println("boo");
+        // cellComplete(new int[]{0,2,5,1}, 5);
+        countPairs(10, new ArrayList<Integer>(Arrays.asList(10,3,5,7,2,8,9,6,1,4)), 7);
     }
 }
