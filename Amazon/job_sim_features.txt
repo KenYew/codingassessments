@@ -1,0 +1,88 @@
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Preliminary thoughts
+
+Feature 1:
+- allows us to establish a new relationship with 3rd party services
+- requires an amazon product manager
+- system only designed to interact with social media platform A and B, so needs extensive re-fatoring to generalise to social media platforms
+- Social media platform B has a rapidly growing user-base and is largely comprised of a younger demographic
+- Interacting with social media platform B could generate more revenue for Amazon
+
+Feature 2:
+- Introduces crashes to the application when shared on certain devices
+- Research shows that there is a corerlation between crashing and order abandonment
+- External team has aligning interest to implement this option - more on board with Feature 2
+- Doesn't require as much coordination across team
+- Takes approximately half the time to implement as Feature 1
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#################################################################################
+Thanks for the great meeting earlier today. I think this is a good opportunity for us to really have a positive
+impact on customer experience as we continue to develope features to improve customer interactions with our website!
+In order to implement any of these features, we'll need to get on the external team's roadmap for routine releases.
+
+Jeff Spencer, Team Lead
+Retail Website Team
+#################################################################################
+
+1. Which of the following are pros of implementing Feature 1? Select four advantages of implementing Feature 1
+
+- Doesn't require reconfiguring existing code
+- Scalable across multiple platforms
+- More revenue for Amazon (/)
+- Potentially develops long-term relationships with a younger demographic (/)
+- Allows for more engagement across multiple social media platforms
+- Would be a good opportunity to boost revenue (/)
+- Allows opportunity to network with Amazon colleagues/external vendors (/)
+
+2. Which of the following are pros of implementing Feature 2? Select two advantages of implementing Feature 2
+
+- Allows for a better customer experience due to the reduction/elimination of crashes
+- Opportunity to build a good working relatinoship with the external team
+- Easier to implement than Feature 1, so it should be prioritized (/)
+- Significant potential for increased revenues/sales
+- The external team will likely be more willing to assist with Feature 2 (/)
+
+3. Which feature would you recommend?
+
+- feature 1 (/)
+- feature 2
+
+#################################################################################
+Jeff just told me that you're recommending we go with Feature 1. I know you're new in this role and I appreciate your input,
+but I think we should go with Feature 2. Let me know if you want to discuss and we can talk things through. Thanks
+
+Kelly, Sr. Engineer
+Retail Website Team
+#################################################################################
+
+4. What is the FIRST step you should take to resolve this disagreement? Rate the effectiveness
+
+A: Meet with the senior engineers and other high-level decision makers (e.g. manager, directors) to get their input (2)
+B: Ask your manager for guidance on the decision (4)
+C: Set up meeting with Kelly Ling and external team to decide which feature to implement (2)
+D: Go with Kelly Ling's recommendation since she is more experienced than you (5)
+E: Go with your own opinion because you've already weighted the pros and cons and know what will have most impact for Amazon (5)
+F: Take a vote on our team because both approaches have pros and cons (3)
+
+#################################################################################
+Thanks for all of your input on the new feature. I'm excited to announce that we are going to move forward with feature 1.
+We think this will provide our customers with the best possible experience. However, we will need the feature to work seamlessly
+with other social media platforms (i.e. social media C, D, and E). We will also need to get this feature implemented within
+the next 3 months. I realise this is an aggressive timeline, but I'm confident you will be able to meet this challenge.
+
+Miranda, Vice President
+Retail Website Team
+#################################################################################
+
+5. Given this new information, what do you need to do in order to deliver the new feature within the given timeline?
+Rate the effectiveness
+
+A: Do not extensively test in order to meet the deadline and be able to deliver results within the deadline (5)
+B: Start working on it even though you know it probably won't get done.
+    After a few weeks, report your progress to your manager and request additional resources (4)
+C: On your own, ask other team members if they can pitch in and help (4)
+D: Push back on the requirements and suggest only integrating with 1 or 2 additional social media platforms (3)
+E: Plan to work overtime alone in order to get it done (5)
+F: Tell your manager that you cannot complete this by yourself and suggest your manager bring in additional resources (2)
+G: Prioritize social media platforms and work on the most critical first and delay other platforms until after the deadline (2)

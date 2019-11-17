@@ -1,0 +1,52 @@
+#################################################################################
+Some customer have told me that they are unable to look up certain produces on our retail website. I have also verified that
+these pages do not load. I will send you a ticket that shows the last 20 requests to the website as well as the log report ot the page.
+Can you figure out what is causing the pages to break?
+#################################################################################
+
+1. What additional information would be helpful to better understand this problem?
+Rate the relevance of each response options
+
+A: Customer brower versions (1)
+B: Customer region (4)
+C: Customer session ID
+D: Screenshot of the error page (1)
+E: URL for the page
+
+2. How would you go about finding the issues with the resouces available to you?
+Rate the effectiveness of each response option
+
+A: Tell the technician this is a one-time glitch and should resolve itself (5)
+B: Go to the code directly and try to find the bug manually (4)
+C: Immediately ask a more experienced engineer for assistance since it is an urgent issue (3)
+D: Look at the metrics e.g. latency, throughput, error couts, number of requests and look for strange behaviour (1)
+E: Search the logs for errors in the timeframe that the error occured (1)
+F: Analyse the logs for specific requests that might have failed (1)
+G: Investigate the failed requests but ignore the valid requests (4)
+
+3. After investigating the available resources what do you think is the root cause? Selet the best option
+
+- requests that have an even request id number are causing issues
+- requests in which customer-reviews and the customer-rating arrays do not have the same number of elements are causing issues
+- requests that have the color set to grey are causing issues
+- requests that have the product name as "Fire TV" are causing issues or requests that are less than 10s apart are causing issues
+- requests that have two spaces in the product name are failing their service calls and throwing UnableToLoadPageException
+- There is no issue, it was a false
+
+#################################################################################
+I heard about the issue with Dai. I know you ran into similar situation a few weeks ago. Would you be able to
+come up with a plan to make sure this doesn't happen again? I would like you to prioritize this so we can ensure
+this situation doesn't happen again. Thanks!
+
+Dingxiang Wu
+Manager
+#################################################################################
+
+4. How would you respond to this request? Select the best option
+
+- set up automations which prevent deployments without testing (/)
+- write up a document to share the knowledge of what happened and how to fix the issue so it doesn't happen again
+- tell your manager that you'll try to get to it after you get other work finished
+- require every code change to undergo at least one peer review
+- ask Dai to work on this since he was more closely involved in the incident
+- Discuss the risks of pushing code without proper testing with your manager and Sally

@@ -1,0 +1,40 @@
+#################################################################################
+Attached are the results of the two different algorithms as applied to deliveries conducted
+over the past 3 days (recall that the team developed algorithms based on 100 days of delivery data):
+- Hourly traffic, available routes
+- population density
+- number of available drivers in the area
+- number of delivers per area
+
+Remember our golas for the routes are:
+- enable 80 deliveries per day
+- should not exceed 200 miles
+
+These goals support route efficiency, which reduces pressure on deliver drivers and our distribution system
+Which algorithm do you want to go forward with?
+#################################################################################
+
+1. How would you like to proceed? Rate the effectiveness
+
+A: Recommend gathering data for an additional 3 days before making a decision (2)
+B: Recommend algorithm #1 because the goal for deliveries per route is more consistently met (5)
+C: Recommend algorithm #2 because the number of deliveries per hour is more ocnsistent (4)
+D: Recommend algorithm #2 because the mileage goal is more consistently met (2)
+E: Recommend algorithm #1 because the mileage per route is lower (5)
+
+#################################################################################
+I was able to get the updated hourly traffic information related to these algorithms for the past 3 days. Take a look and see if
+this is helpful in making your decision. I've also included the original aggregate traffic data used to build the algorithm.
+Remember that we need to lauch this feature in the next 3 days. Thanks
+
+Nadia Diaz
+Team Lead
+#################################################################################
+
+3. What is your final recommendation? Select the best response
+
+- Recommend algorithm #2 because the variability in mileage is accounted for by traffic patterns
+- No conclusive decision can be made with the given data
+- Recommend algorithm #2 because the milage goal is more consistently met
+- Propose development of a new algorithm that better accounts for traffic patterns
+- Recommend algorithm #1 because the goal for deliveries per route is more consistently met
