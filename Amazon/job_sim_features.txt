@@ -58,11 +58,11 @@ Retail Website Team
 
 4. What is the FIRST step you should take to resolve this disagreement? Rate the effectiveness
 
-A: Meet with the senior engineers and other high-level decision makers (e.g. manager, directors) to get their input (2)
-B: Ask your manager for guidance on the decision (4)
+A: Meet with the senior engineers and other high-level decision makers (e.g. manager, directors) to get their input (5)
+B: Ask your manager for guidance on the decision (3)
 C: Set up meeting with Kelly Ling and external team to decide which feature to implement (2)
-D: Go with Kelly Ling's recommendation since she is more experienced than you (5)
-E: Go with your own opinion because you've already weighted the pros and cons and know what will have most impact for Amazon (5)
+D: Go with Kelly Ling's recommendation since she is more experienced than you (4)
+E: Go with your own opinion because you've already weighted the pros and cons and know what will have most impact for Amazon (4)
 F: Take a vote on our team because both approaches have pros and cons (3)
 
 #################################################################################
@@ -83,6 +83,6 @@ B: Start working on it even though you know it probably won't get done.
     After a few weeks, report your progress to your manager and request additional resources (4)
 C: On your own, ask other team members if they can pitch in and help (4)
 D: Push back on the requirements and suggest only integrating with 1 or 2 additional social media platforms (3)
-E: Plan to work overtime alone in order to get it done (5)
-F: Tell your manager that you cannot complete this by yourself and suggest your manager bring in additional resources (2)
+E: Plan to work overtime alone in order to get it done (4)
+F: Tell your manager that you cannot complete this by yourself and suggest your manager bring in additional resources (1)
 G: Prioritize social media platforms and work on the most critical first and delay other platforms until after the deadline (2)

@@ -1,6 +1,6 @@
 #################################################################################
-Attached are the results of the two different algorithms as applied to deliveries conducted
-over the past 3 days (recall that the team developed algorithms based on 100 days of delivery data):
+Attached are the results of the two different algorithms as applied to deliveries conducted over the past 3 days
+(recall that the team developed algorithms based on 100 days of delivery data):
 - Hourly traffic, available routes
 - population density
 - number of available drivers in the area
@@ -16,11 +16,20 @@ Which algorithm do you want to go forward with?
 
 1. How would you like to proceed? Rate the effectiveness
 
-A: Recommend gathering data for an additional 3 days before making a decision (2)
-B: Recommend algorithm #1 because the goal for deliveries per route is more consistently met (5)
-C: Recommend algorithm #2 because the number of deliveries per hour is more ocnsistent (4)
+A: Recommend gathering data for an additional 3 days before making a decision (5)
+B: Recommend algorithm #1 because the goal for deliveries per route is more consistently met (2)
+C: Recommend algorithm #2 because the number of deliveries per hour is more consistent (4)
 D: Recommend algorithm #2 because the mileage goal is more consistently met (2)
 E: Recommend algorithm #1 because the mileage per route is lower (5)
+
+2. If you could request additional information. What would help you to determine the better algorithm?
+Select the two (2) most relevant response options:
+
+- Map of the city and surrounding area
+- Driver performance during the 3-day timeframe
+- Data on the algorithm factors from the 100-day development timeframe (/)
+- Predicted future trends in data that may impact efficiency of the algorithms
+- Whether number of deliveries or mileage is the higher priority (/)
 
 #################################################################################
 I was able to get the updated hourly traffic information related to these algorithms for the past 3 days. Take a look and see if
@@ -35,6 +44,6 @@ Team Lead
 
 - Recommend algorithm #2 because the variability in mileage is accounted for by traffic patterns
 - No conclusive decision can be made with the given data
-- Recommend algorithm #2 because the milage goal is more consistently met
+- Recommend algorithm #2 because the milage goal is more consistently met (/)
 - Propose development of a new algorithm that better accounts for traffic patterns
 - Recommend algorithm #1 because the goal for deliveries per route is more consistently met
